@@ -1,0 +1,17 @@
+clc,clear,close all
+xn=[1,1,1,1];
+M=4;
+k=0:1:M-1;
+X=dtft(xn,w)
+Xk1=dft(xn,M);
+subplot(211);
+plot(w1/pi,abs(X1));
+stem(2/M*k,abs(Xk1));
+ylabel('Xk1'); 
+M=32;
+k=0:1:M-1;
+Xk2=dft(xn,M);
+subplot(212);
+stem(2/M*k,abs(Xk2));
+xlabel('\omega/\pi'); 
+ylabel('Xk2');
