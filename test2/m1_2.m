@@ -4,12 +4,24 @@ n=0:1:N-1;
 k=0:1:N-1;
 x1=cos(pi/4*n);
 x2=sin(pi/8*n);
-xn=x1+j*x2;
+xn=x1+1i*x2;
 
-Xk=fft(xn,16);
-Xk1=conj(Xk);
-X1=1/2*(Xk+Xk1(mod(-k,N)+1));%这里用fliplr怎么不对？
-X2=1/2*(Xk-Xk1(mod(-k,N)+1));
+
+format compact
+
+
+Xk=fft(xn,16)
+Xkx=conj(Xk)%取共轭
+X1=1/2*(Xk+[0,fliplr(Xkx(1,2:16))])
+%X2=1/2*(Xk-[0,fliplr(Xkx(1,2:16))])
+X1=1/2*(Xk+Xkx(mod(-k,N)+1))
+X2=1/2*(Xk-Xkx(mod(-k,N)+1));
+
+a=Xkx(mod(-k,N)+1)
+b=[0,fliplr(Xkx(1,2:16))]
+%c=fix(real(Xkx))
+
+
 x11=ifft(X1,16);
 x22=ifft(X2,16)*(-1i);
 
