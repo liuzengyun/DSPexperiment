@@ -33,13 +33,10 @@ title('Xk')
 grid on
 
 % 利用双线性变换法的频率转换形式得到模拟滤波器的频率
-Wp=(2/T)*tan(wp/2);
-Ws=(2/T)*tan(ws/2);
+Wp=(2/Ts)*tan(wp/2);
+Ws=(2/Ts)*tan(ws/2);
 
 % IIR 数字滤波器的设计及实现
-                    % N：模拟滤波器阶数
-                    % Oc：3dB截止频率
-                    % Bz,Az：H(z)分子,分母系数
 [NN,Wc]=buttord(Wp,Ws,ap,as,'s');  %之前用过N，这里使用NN表示阶数  
 [B,A]=butter(NN,Wc,'s');
 [Bz,Az]=bilinear(B,A,Fs);
@@ -50,7 +47,6 @@ xlabel('w/\pi');
 ylabel('dB');
 title('损耗函数')
 grid on
-
 
 % 滤波后的时域波形图
 subplot(224);
