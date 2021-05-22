@@ -27,8 +27,8 @@ wk=2*pi/N*n;
 % 确定数字滤波器设计指标
 ap=0.1; as=60;
 Wp1=2*pi*340*Ts; Ws1=2*pi*350*Ts;% 低通
-Wp2=[2*pi*380*Ts,2*pi*820*Ts]; Ws2=[2*pi*370*Ts,2*pi*830*Ts];% 带通
-Wp3=2*pi*1000*Ts; Ws3=2*pi*900*Ts;% 高通
+Wp2=[2*pi*500*Ts,2*pi*700*Ts]; Ws2=[2*pi*450*Ts,2*pi*750*Ts];% 带通
+Wp3=2*pi*1000*Ts; Ws3=2*pi*950*Ts;% 高通
 
 % 设计滤波器,
 [N1,wp1]=ellipord(Wp1/pi,Ws1/pi,ap,as); % 低通
@@ -39,9 +39,9 @@ Wp3=2*pi*1000*Ts; Ws3=2*pi*900*Ts;% 高通
 [Bz3,Az3]=ellip(N3,ap,as,wp3,'high');   % 高通
 
 % 画损耗函数
-[H1,w1]=freqz(Bz1,Az1,N1);
-[H2,w2]=freqz(Bz2,Az2,N2);
-[H3,w3]=freqz(Bz3,Az3,N3);
+[H1,w1]=freqz(Bz1,Az1,1024);
+[H2,w2]=freqz(Bz2,Az2,1024);
+[H3,w3]=freqz(Bz3,Az3,1024);
 subplot(321)
 plot(w1/pi,20*log10(abs(H1)/max(abs(H1))));
 title('低通滤波器损耗函数')
