@@ -40,7 +40,7 @@ Ws=(2/Ts)*tan(ws/2);
 [NN,Wc]=buttord(Wp,Ws,ap,as,'s');  %之前用过N，这里使用NN表示阶数  
 [B,A]=butter(NN,Wc,'s');
 [Bz,Az]=bilinear(B,A,Fs);
-[H,w]=freqz(Bz,Az,NN);
+[H,w]=freqz(Bz,Az,N);
 subplot(223);
 plot(w/pi,20*log10(abs(H)/max(abs(H))))
 xlabel('w/\pi');

@@ -11,11 +11,8 @@ fc3=cos(2*pi*1200*n*Ts);
 stnT=fm1.*fc1+fm2.*fc2+fm3.*fc3;
 Sk=fft(stnT,N);
 wk=2*pi/N*n;
-subplot(2,1,1)
-stem(wk/pi,abs(Sk)/max(abs(Sk)));
-xlabel('f/Hz');
-ylabel('류똑');
-title('N=2000')
+
+
 grid on
 N=100;  n=0:N-1;
 Fs=3000; Ts=1/Fs;
@@ -28,7 +25,7 @@ fc33=cos(2*pi*1200*n*Ts);
 stnT=fm11.*fc11+fm22.*fc22+fm33.*fc33;
 Sk=fft(stnT,N);
 wk=2*pi/N*n;
-subplot(2,1,2)
+
 stem(wk/pi,abs(Sk)/max(abs(Sk)));
 xlabel('f/Hz');
 ylabel('류똑');
